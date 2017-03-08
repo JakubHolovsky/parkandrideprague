@@ -7,7 +7,7 @@ namespace ParkAndRidePrague.Core.Dtos
     {
         [JsonProperty("desc")]
         public string Description { get; set; }
-        [JsonProperty("results ")]
+        [JsonProperty("results")]
         public List<TskParking> Parkings { get; set; }
     }
 }

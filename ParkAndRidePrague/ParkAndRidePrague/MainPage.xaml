@@ -2,10 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ParkAndRidePrague"
+             xmlns:my="clr-namespace:ParkAndRidePrague.Core.Enums;assembly=ParkAndRidePrague.Core"
              x:Class="ParkAndRidePrague.MainPage">
-
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
+    <ContentPage.Content>
+        <ListView  x:Name="listViewParkings">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Margin="10, 5, 0, 5" VerticalTextAlignment="Center" Text="{Binding Name}" TextColor="Black" FontSize="20" />
+                                <Label Margin="0, 5, 10, 5" VerticalTextAlignment="Center" Text="{Binding NumOfFreePlaces}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="20" />
+                                <StackLayout.Style>
+                                    <Style TargetType="{x:Type StackLayout}">
+                                        <Style.Triggers>
+                                            <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.None}">
+                                                <Setter Property="BackgroundColor" Value="Red" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.Low}">
+                                                <Setter Property="BackgroundColor" Value="Orange" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.Medium}">
+                                                <Setter Property="BackgroundColor" Value="Yellow" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.High}">
+                                                <Setter Property="BackgroundColor" Value="Green" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackLayout.Style>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
 </ContentPage>

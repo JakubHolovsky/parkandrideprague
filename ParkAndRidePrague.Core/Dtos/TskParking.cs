@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ParkAndRidePrague.Core.Enums;
 
 namespace ParkAndRidePrague.Core.Dtos
 {
@@ -26,5 +27,26 @@ namespace ParkAndRidePrague.Core.Dtos
         public int Id { get; set; }
         [JsonProperty("lat")]
         public double Lat { get; set; }
+
+        #region Custom Properties
+
+        [JsonIgnore]
+        public ParkingAvailability ParkingAvailability
+        {
+            get
+            {
+                var onePercent = (double)TotalNumOfPlaces / 100;
+                if (NumOfFreePlaces == 0)
+                    return ParkingAvailability.None;
+                if (NumOfFreePlaces <= (int)(onePercent * 10))
+                    return ParkingAvailability.Low;
+                else if (NumOfFreePlaces <= (int)(onePercent * 30))
+                    return ParkingAvailability.Medium;
+                else 
+                    return ParkingAvailability.High;
+            }
+        }
+
+        #endregion
     }
 }

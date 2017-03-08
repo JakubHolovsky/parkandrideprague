@@ -43,6 +43,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Dtos\TskParking.cs" />
     <Compile Include="Dtos\TskResponse.cs" />
+    <Compile Include="Enums\ParkingAvailability.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
