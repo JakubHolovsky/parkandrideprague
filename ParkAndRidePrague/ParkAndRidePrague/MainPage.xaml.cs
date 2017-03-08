@@ -17,7 +17,7 @@ namespace ParkAndRidePrague
         private readonly TskApi tskApi;
         private readonly ILogger logger;
         private readonly ObservableCollection<TskParking> parkings;
-        private readonly Timer timer;
+        private Timer timer;
         private bool isRefreshing;
 
         public MainPage()
@@ -30,14 +30,11 @@ namespace ParkAndRidePrague
             listViewParkings.IsPullToRefreshEnabled = true;
             parkings = new ObservableCollection<TskParking>();
             listViewParkings.ItemsSource = parkings;
-
-            TimerCallback timerDelegate = TimerCallback;
-            timer = new Timer(timerDelegate, null, 0, 15000);
         }
 
         private void TimerCallback(object state)
         {
-            RefreshParkings().Wait();
+            RefreshParkings(parkings.Count == 0).Wait();
         }
 
         protected override void OnAppearing()
@@ -45,6 +42,9 @@ namespace ParkAndRidePrague
             base.OnAppearing();
 
             listViewParkings.Refreshing += ListViewParkingsOnRefreshing;
+
+            TimerCallback timerDelegate = TimerCallback;
+            timer = new Timer(timerDelegate, null, 0, 20000);
         }
 
         protected override void OnDisappearing()
@@ -52,24 +52,28 @@ namespace ParkAndRidePrague
             base.OnDisappearing();
 
             listViewParkings.Refreshing -= ListViewParkingsOnRefreshing;
+
+            if (timer != null)
+            {
+                timer.Dispose();
+                timer = null;
+            }
         }
 
         private async void ListViewParkingsOnRefreshing(object sender, EventArgs eventArgs)
         {
-            await RefreshParkings();
+            await RefreshParkings(true);
         }
 
-        private async Task RefreshParkings()
+        private async Task RefreshParkings(bool displayLoading)
         {
             if (isRefreshing)
                 return;
 
             isRefreshing = true;
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                listViewParkings.IsRefreshing = true;
-            });
+            if (displayLoading)
+                ShowLoading();
 
             var refreshedParkings = await tskApi.GetParkings();
 
@@ -88,12 +92,26 @@ namespace ParkAndRidePrague
                 parkings.Add(parking);
             }
 
+            if (displayLoading)
+                HideLoading();
+
+            isRefreshing = false;
+        }
+
+        private void ShowLoading()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                listViewParkings.IsRefreshing = true;
+            });
+        }
+
+        private void HideLoading()
+        {
             Device.BeginInvokeOnMainThread(() =>
             {
                 listViewParkings.IsRefreshing = false;
             });
-
-            isRefreshing = false;
         }
     }
 }
