@@ -1,16 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ParkAndRidePrague"
              xmlns:my="clr-namespace:ParkAndRidePrague.Core.Enums;assembly=ParkAndRidePrague.Core"
              x:Class="ParkAndRidePrague.MainPage">
     <ContentPage.Content>
-        <ListView  x:Name="listViewParkings">
+        <ListView  x:Name="listViewParkings" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="White" Orientation="Vertical" Width="Infinity" Height="Infinity">
-                            <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0, 0, 0, 1">
                                 <Label Margin="10, 5, 0, 5" VerticalTextAlignment="Center" Text="{Binding Name}" TextColor="Black" FontSize="20" />
                                 <Label Margin="0, 5, 10, 5" VerticalTextAlignment="Center" Text="{Binding NumOfFreePlaces}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="20" />
                                 <StackLayout.Style>
@@ -31,7 +30,6 @@
                                         </Style.Triggers>
                                     </Style>
                                 </StackLayout.Style>
-                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -69,7 +69,10 @@ namespace ParkAndRidePrague
             isRefreshing = true;
 
             if (displayLoading)
-                ShowLoading();
+            Device.BeginInvokeOnMainThread(() =>
+			{
+				listViewParkings.IsRefreshing = true;
+			});
 
             var refreshedParkings = await tskApi.GetParkings();
 
@@ -89,25 +92,12 @@ namespace ParkAndRidePrague
             }
 
             if (displayLoading)
-                HideLoading();
+            Device.BeginInvokeOnMainThread(() =>
+			{
+				listViewParkings.IsRefreshing = false;
+			});
 
             isRefreshing = false;
-        }
-
-        private void ShowLoading()
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                listViewParkings.IsRefreshing = true;
-            });
-        }
-
-        private void HideLoading()
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                listViewParkings.IsRefreshing = false;
-            });
         }
     }
 }
