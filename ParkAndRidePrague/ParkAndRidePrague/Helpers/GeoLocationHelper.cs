@@ -1,13 +1,13 @@
 ﻿using System;
-using ParkAndRidePrague.Core.Dtos;
+using ParkAndRidePrague.Core.Interfaces;
 
 namespace ParkAndRidePrague.Helpers
 {
     public static class GeoLocationHelper
     {
-        public static double GetDistance(this TskParking tskParking, double location2Lat, double location2Lng)
+        public static double GetDistance(this IParking tskParking, double location2Lat, double location2Lng)
         {
-            return CalculateDistance(tskParking.Lat, tskParking.Lng, location2Lat, location2Lng);
+            return CalculateDistance(tskParking.Latitude, tskParking.Longitude, location2Lat, location2Lng);
         }
 
         private static double DegreesToRadians(double degrees)

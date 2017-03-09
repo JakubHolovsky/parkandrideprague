@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using ParkAndRidePrague.Core.Interfaces;
 
 namespace ParkAndRidePrague.Core.Common
 {
-    public interface ILogger
-    {
-        void Log(string message);
-        void Log(Exception exception);
-    }
-
     public class Logger : ILogger
     {
         public void Log(string message)

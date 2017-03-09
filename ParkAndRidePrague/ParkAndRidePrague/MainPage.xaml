@@ -9,8 +9,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="#eee"
-                        Orientation="Vertical">
+                        <StackLayout BackgroundColor="White" Orientation="Vertical" Width="Infinity" Height="Infinity">
                             <StackLayout Orientation="Horizontal">
                                 <Label Margin="10, 5, 0, 5" VerticalTextAlignment="Center" Text="{Binding Name}" TextColor="Black" FontSize="20" />
                                 <Label Margin="0, 5, 10, 5" VerticalTextAlignment="Center" Text="{Binding NumOfFreePlaces}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="20" />

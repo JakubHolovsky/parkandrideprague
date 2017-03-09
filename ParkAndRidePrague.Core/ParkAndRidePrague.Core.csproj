@@ -38,12 +38,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IParking.cs" />
+    <Compile Include="Interfaces\IParkingApi.cs" />
     <Compile Include="Apis\TskApi.cs" />
     <Compile Include="Common\Logger.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Dtos\TskParking.cs" />
     <Compile Include="Dtos\TskResponse.cs" />
     <Compile Include="Enums\ParkingAvailability.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

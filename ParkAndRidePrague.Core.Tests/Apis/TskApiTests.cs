@@ -28,7 +28,7 @@ namespace ParkAndRidePrague.Core.Tests.Apis
             Assert.IsNotNull(parkings);
             Assert.IsTrue(parkings.Count > 0);
             foreach (var parking in parkings)
-                Console.WriteLine($"Parking: {parking.Name}, Availability: {parking.ParkingAvailability}, Total Places: {parking.TotalNumOfPlaces}, Free Places: {parking.NumOfFreePlaces}, Taken Places: {parking.NumOfTakenPlaces}");
+                Console.WriteLine($"Parking: {parking.Name}, Availability: {parking.ParkingAvailability}, Total Places: {parking.TotalPlacesCount}, Free Places: {parking.FreePlacesCount}, Taken Places: {parking.TakenPlacesCount}");
         }
     }
 }
