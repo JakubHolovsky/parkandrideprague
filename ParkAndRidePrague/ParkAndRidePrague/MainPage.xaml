@@ -10,8 +10,8 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0, 0, 0, 1">
-                                <Label Margin="10, 5, 0, 5" VerticalTextAlignment="Center" Text="{Binding Name}" TextColor="Black" FontSize="20" />
-                                <Label Margin="0, 5, 10, 5" VerticalTextAlignment="Center" Text="{Binding NumOfFreePlaces}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="20" />
+                                <Label Margin="10, 5, 0, 5" VerticalTextAlignment="Center" Text="{Binding Name}" HorizontalOptions="Start" TextColor="Black" FontSize="20" />
+                                <Label Margin="0, 5, 10, 5" VerticalTextAlignment="Center" Text="{Binding FreePlacesCount}" HorizontalOptions="End" TextColor="Black" FontSize="20" />
                                 <StackLayout.Style>
                                     <Style TargetType="{x:Type StackLayout}">
                                         <Style.Triggers>
