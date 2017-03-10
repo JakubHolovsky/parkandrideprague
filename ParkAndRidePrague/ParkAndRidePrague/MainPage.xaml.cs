@@ -18,7 +18,6 @@ namespace ParkAndRidePrague
         private readonly ILogger logger;
         private readonly ObservableCollection<IParking> parkings;
         private Timer timer;
-        private bool isRefreshing;
 
         public MainPage()
         {
@@ -72,11 +71,6 @@ namespace ParkAndRidePrague
 
         private async Task RefreshParkings(bool displayLoading)
         {
-            if (isRefreshing)
-                return;
-
-			isRefreshing = true;
-
 			UpdateStatus("updating");
 			if (displayLoading)
 				UpdateLoading(true);
@@ -89,7 +83,6 @@ namespace ParkAndRidePrague
 				if (displayLoading)
 					UpdateLoading(false);
 
-				isRefreshing = false;
 				return;
 			}
 
@@ -113,8 +106,6 @@ namespace ParkAndRidePrague
 			if (displayLoading)
 				UpdateLoading(false);
 			UpdateStatus($"updated at {DateTime.Now.ToString("HH:mm:ss")}");
-
-            isRefreshing = false;
         }
 
 		private void UpdateLoading(bool showLoading)

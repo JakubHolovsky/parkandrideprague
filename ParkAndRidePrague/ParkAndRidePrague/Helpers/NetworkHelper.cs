@@ -8,7 +8,7 @@ namespace ParkAndRidePrague
 	{
 		public static async Task<bool> HasInternetAccess()
 		{
-			var isHostReachable = await CrossConnectivity.Current.IsRemoteReachable(Constants.Apis.TskkApiHost);
+			var isHostReachable = await CrossConnectivity.Current.IsRemoteReachable(Constants.Apis.TskkApiHost, 443, 7000);
 			return CrossConnectivity.Current.IsConnected && isHostReachable;
 		}
 	}
