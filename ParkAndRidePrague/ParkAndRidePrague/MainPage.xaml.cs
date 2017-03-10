@@ -35,7 +35,7 @@ namespace ParkAndRidePrague
             listViewParkings.ItemsSource = parkings;
 
             TimerCallback timerDelegate = TimerCallback;
-            timer = new Timer(timerDelegate, null, 0, 20000);
+            timer = new Timer(timerDelegate, null, 0, 30000);
         }
 
         private void TimerCallback(object state)
@@ -75,11 +75,23 @@ namespace ParkAndRidePrague
             if (isRefreshing)
                 return;
 
-            isRefreshing = true;
+			isRefreshing = true;
 
 			UpdateStatus("updating");
 			if (displayLoading)
 				UpdateLoading(true);
+
+			var hasInternetAccess = await NetworkHelper.HasInternetAccess();
+			if (!hasInternetAccess)
+			{
+				UpdateStatus("no network");
+
+				if (displayLoading)
+					UpdateLoading(false);
+
+				isRefreshing = false;
+				return;
+			}
 
             var refreshedParkings = await parkingApi.GetParkings();
 

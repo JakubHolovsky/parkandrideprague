@@ -5,9 +5,9 @@
              xmlns:my="clr-namespace:ParkAndRidePrague.Core.Enums;assembly=ParkAndRidePrague.Core"
              x:Class="ParkAndRidePrague.MainPage">
     <ContentPage.Content>
-		<StackLayout x:Name="stackLayoutPageContent" Orientation="Vertical">
-		<StackLayout x:Name="statusBar" Orientation="Horizontal">
-			<Label x:Name="labelStatus" HorizontalOptions="EndAndExpand" />
+		<StackLayout Orientation="Vertical">
+		<StackLayout Orientation="Horizontal">
+			<Label x:Name="labelStatus" Margin="0, 0, 10, 0" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
 		</StackLayout>
         <ListView  x:Name="listViewParkings" SeparatorVisibility="None">
             <ListView.ItemTemplate>

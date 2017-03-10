@@ -146,10 +146,16 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.2.3.0\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.2.3.0\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ParkAndRidePrague\ParkAndRidePrague.csproj">
-      <Project>{7e842a70-e14b-4ca0-a7ac-e426d40914b8}</Project>
+      <Project>{86E77FAF-38A7-473E-9EEC-9C8339B28FC3}</Project>
       <Name>ParkAndRidePrague</Name>
     </ProjectReference>
   </ItemGroup>
