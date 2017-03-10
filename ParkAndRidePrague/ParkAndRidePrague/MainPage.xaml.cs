@@ -5,9 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ParkAndRidePrague.Core.Apis;
 using ParkAndRidePrague.Core.Common;
-using ParkAndRidePrague.Core.Dtos;
 using ParkAndRidePrague.Core.Interfaces;
-using ParkAndRidePrague.Core.Test;
 using ParkAndRidePrague.Helpers;
 using Plugin.Geolocator;
 using Xamarin.Forms;
@@ -79,11 +77,9 @@ namespace ParkAndRidePrague
 
             isRefreshing = true;
 
-            if (displayLoading)
-            Device.BeginInvokeOnMainThread(() =>
-			{
-				listViewParkings.IsRefreshing = true;
-			});
+			UpdateStatus("updating");
+			if (displayLoading)
+				UpdateLoading(true);
 
             var refreshedParkings = await parkingApi.GetParkings();
 
@@ -102,13 +98,27 @@ namespace ParkAndRidePrague
                 parkings.Add(parking);
             }
 
-            if (displayLoading)
-            Device.BeginInvokeOnMainThread(() =>
-			{
-				listViewParkings.IsRefreshing = false;
-			});
+			if (displayLoading)
+				UpdateLoading(false);
+			UpdateStatus($"updated at {DateTime.Now.ToString("HH:mm:ss")}");
 
             isRefreshing = false;
         }
+
+		private void UpdateLoading(bool showLoading)
+		{
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				listViewParkings.IsRefreshing = showLoading;
+			});
+		}
+
+		private void UpdateStatus(string text)
+		{
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				labelStatus.Text = text;
+			});
+		}
     }
 }
