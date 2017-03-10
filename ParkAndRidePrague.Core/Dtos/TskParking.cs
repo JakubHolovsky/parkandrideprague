@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ParkAndRidePrague.Core.Enums;
 using ParkAndRidePrague.Core.Interfaces;
+using ParkAndRidePrague.Core.Helpers;
 
 namespace ParkAndRidePrague.Core.Dtos
 {
@@ -36,15 +37,7 @@ namespace ParkAndRidePrague.Core.Dtos
         {
             get
             {
-                var onePercent = (double)TotalPlacesCount / 100;
-                if (FreePlacesCount == 0)
-                    return ParkingAvailability.None;
-                if (FreePlacesCount <= (int)(onePercent * 10))
-                    return ParkingAvailability.Low;
-                else if (FreePlacesCount <= (int)(onePercent * 30))
-                    return ParkingAvailability.Medium;
-                else 
-                    return ParkingAvailability.High;
+				return this.CalculateParkingAvailability();
             }
         }
         #endregion

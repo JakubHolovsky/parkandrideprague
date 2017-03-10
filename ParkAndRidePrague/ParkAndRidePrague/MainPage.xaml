@@ -11,21 +11,21 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="0, 0, 0, 1">
                                 <Label Margin="10, 5, 0, 5" VerticalTextAlignment="Center" Text="{Binding Name}" HorizontalOptions="Start" TextColor="Black" FontSize="20" />
-                                <Label Margin="0, 5, 10, 5" VerticalTextAlignment="Center" Text="{Binding FreePlacesCount}" HorizontalOptions="End" TextColor="Black" FontSize="20" />
+                                <Label Margin="0, 5, 10, 5" VerticalTextAlignment="Center" Text="{Binding FreePlacesCount}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="20" />
                                 <StackLayout.Style>
                                     <Style TargetType="{x:Type StackLayout}">
                                         <Style.Triggers>
                                             <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.None}">
-                                                <Setter Property="BackgroundColor" Value="Red" />
+                                                <Setter Property="BackgroundColor" Value="#FF5722" />
                                             </DataTrigger>
                                             <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.Low}">
-                                                <Setter Property="BackgroundColor" Value="Orange" />
+                                                <Setter Property="BackgroundColor" Value="#FFC107" />
                                             </DataTrigger>
                                             <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.Medium}">
-                                                <Setter Property="BackgroundColor" Value="Yellow" />
+                                                <Setter Property="BackgroundColor" Value="#CDDC39" />
                                             </DataTrigger>
                                             <DataTrigger TargetType="{x:Type StackLayout}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.High}">
-                                                <Setter Property="BackgroundColor" Value="Green" />
+                                                <Setter Property="BackgroundColor" Value="#4CAF50" />
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>

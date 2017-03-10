@@ -7,6 +7,7 @@ using ParkAndRidePrague.Core.Apis;
 using ParkAndRidePrague.Core.Common;
 using ParkAndRidePrague.Core.Dtos;
 using ParkAndRidePrague.Core.Interfaces;
+using ParkAndRidePrague.Core.Test;
 using ParkAndRidePrague.Helpers;
 using Plugin.Geolocator;
 using Xamarin.Forms;
@@ -15,7 +16,7 @@ namespace ParkAndRidePrague
 {
     public partial class MainPage : ContentPage
     {
-        private readonly TskApi tskApi;
+		private readonly IParkingApi parkingApi;
         private readonly ILogger logger;
         private readonly ObservableCollection<IParking> parkings;
         private Timer timer;
@@ -25,8 +26,11 @@ namespace ParkAndRidePrague
         {
             InitializeComponent();
 
+			Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+
             logger = new Logger();
-            tskApi = new TskApi(logger);
+			// parkingApi = new TskApi(logger);
+			parkingApi = new TestParkingApi();
 
             listViewParkings.IsPullToRefreshEnabled = true;
             parkings = new ObservableCollection<IParking>();
@@ -74,7 +78,7 @@ namespace ParkAndRidePrague
 				listViewParkings.IsRefreshing = true;
 			});
 
-            var refreshedParkings = await tskApi.GetParkings();
+            var refreshedParkings = await parkingApi.GetParkings();
 
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
