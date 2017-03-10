@@ -29,8 +29,8 @@ namespace ParkAndRidePrague
 			Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
             logger = new Logger();
-			// parkingApi = new TskApi(logger);
-			parkingApi = new TestParkingApi();
+			parkingApi = new TskApi(logger);
+			// parkingApi = new TestParkingApi();
 
             listViewParkings.IsPullToRefreshEnabled = true;
             parkings = new ObservableCollection<IParking>();
@@ -51,6 +51,7 @@ namespace ParkAndRidePrague
             base.OnAppearing();
 
             listViewParkings.Refreshing += ListViewParkingsOnRefreshing;
+			listViewParkings.ItemTapped += ListViewParkingsItemTapped;
         }
 
         protected override void OnDisappearing()
@@ -58,9 +59,15 @@ namespace ParkAndRidePrague
             base.OnDisappearing();
 
             listViewParkings.Refreshing -= ListViewParkingsOnRefreshing;
+			listViewParkings.ItemTapped -= ListViewParkingsItemTapped;
         }
 
-        private async void ListViewParkingsOnRefreshing(object sender, EventArgs eventArgs)
+		void ListViewParkingsItemTapped(object sender, ItemTappedEventArgs e)
+		{
+			listViewParkings.SelectedItem = null;
+		}
+
+		private async void ListViewParkingsOnRefreshing(object sender, EventArgs eventArgs)
         {
             await RefreshParkings(true);
         }
