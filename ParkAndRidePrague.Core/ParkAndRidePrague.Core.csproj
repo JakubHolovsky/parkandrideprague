@@ -51,6 +51,7 @@
     <Compile Include="Test\TestParking.cs" />
     <Compile Include="Test\TestParkingApi.cs" />
     <Compile Include="Helpers\ParkingHelper.cs" />
+    <Compile Include="Dtos\ApiResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

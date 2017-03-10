@@ -10,7 +10,7 @@ namespace ParkAndRidePrague.Core.Test
 		{
 		}
 
-		public async Task<List<IParking>> GetParkings()
+		public async Task<ApiResult<List<IParking>>> GetParkings()
 		{
 			var testParkings = new List<IParking>();
 			var testParking1 = new TestParking()
@@ -53,7 +53,7 @@ namespace ParkAndRidePrague.Core.Test
 				TotalPlacesCount = 10
 			};
 			testParkings.Add(testParking4);
-			return testParkings;
+			return new ApiResult<List<IParking>>() { Error = false, Result = testParkings };
 		}
 	}
 }

@@ -86,17 +86,37 @@ namespace ParkAndRidePrague
 				return;
 			}
 
-            var refreshedParkings = await parkingApi.GetParkings();
+			var apiResult = await parkingApi.GetParkings();
 
-            var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
-            if (locator.IsGeolocationAvailable && locator.IsGeolocationEnabled)
-            {
-                var position = await CrossGeolocator.Current.GetPositionAsync();
-                refreshedParkings =
-                    refreshedParkings.OrderBy(p => p.GetDistance(position.Latitude, position.Longitude))
-                        .ToList();
-            }
+			if (apiResult.Error)
+			{
+				UpdateStatus("cannot updating parkings now");
+
+				if (displayLoading)
+					UpdateLoading(false);
+
+				return;
+			}
+
+			var refreshedParkings = apiResult.Result;
+
+			try
+			{
+				var locator = CrossGeolocator.Current;
+				locator.DesiredAccuracy = 50;
+				if (locator.IsGeolocationAvailable && locator.IsGeolocationEnabled)
+				{
+					var position = await CrossGeolocator.Current.GetPositionAsync();
+					refreshedParkings =
+						refreshedParkings.OrderBy(p => p.GetDistance(position.Latitude, position.Longitude))
+							.ToList();
+				}
+			}
+			catch (Exception exception)
+			{
+				logger.Log(exception);
+			}
+            
             parkings.Clear();
             foreach (var parking in refreshedParkings)
             {

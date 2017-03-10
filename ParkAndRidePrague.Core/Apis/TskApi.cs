@@ -18,19 +18,27 @@ namespace ParkAndRidePrague.Core.Apis
             this.logger = logger;
         }
 
-        public async Task<List<IParking>> GetParkings()
+        public async Task<ApiResult<List<IParking>>> GetParkings()
         {
             try
             {
                 var httpClient = new HttpClient();
                 var jsonResponse = await httpClient.GetStringAsync(Constants.Apis.TskApiUrl);
                 var tskResponse = JsonConvert.DeserializeObject<TskResponse>(jsonResponse);
-                return tskResponse.Parkings.Cast<IParking>().ToList();
+				return new ApiResult<List<IParking>>
+				{
+					Error = false,
+					Result = tskResponse.Parkings.Cast<IParking>().ToList()
+				};
             }
             catch (Exception e)
             {
                 logger.Log(e);
-                return new List<IParking>();
+				return new ApiResult<List<IParking>>()
+				{
+					Error = true,
+					Result = new List<IParking>()
+				};
             }
         }
     }
