@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ParkAndRidePrague.Core.Apis;
 using ParkAndRidePrague.Core.Common;
 using ParkAndRidePrague.Core.Interfaces;
+using ParkAndRidePrague.Core.Test;
 using ParkAndRidePrague.Helpers;
 using Plugin.Geolocator;
 using Xamarin.Forms;
@@ -22,8 +23,6 @@ namespace ParkAndRidePrague
         public MainPage()
         {
             InitializeComponent();
-
-			Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
 
             logger = new Logger();
 			parkingApi = new TskApi(logger);
@@ -59,9 +58,15 @@ namespace ParkAndRidePrague
 			listViewParkings.ItemTapped -= ListViewParkingsItemTapped;
         }
 
-		void ListViewParkingsItemTapped(object sender, ItemTappedEventArgs e)
+		private async void ListViewParkingsItemTapped(object sender, ItemTappedEventArgs e)
 		{
 			listViewParkings.SelectedItem = null;
+			var parking = e.Item as IParking;
+			if (parking == null)
+				return;
+
+			var parkingDetail = new ParkingDetail(parking);
+			await Navigation.PushModalAsync(new NavigationPage(parkingDetail));
 		}
 
 		private async void ListViewParkingsOnRefreshing(object sender, EventArgs eventArgs)
@@ -98,6 +103,7 @@ namespace ParkAndRidePrague
 				return;
 			}
 
+			((App)Application.Current).InvokeParkingsRefreshed(apiResult);
 			var refreshedParkings = apiResult.Result;
 
 			try
@@ -125,7 +131,7 @@ namespace ParkAndRidePrague
 
 			if (displayLoading)
 				UpdateLoading(false);
-			UpdateStatus($"updated at {DateTime.Now.ToString("HH:mm:ss")}");
+			UpdateStatus($"updated at {apiResult.UpdatedAt.ToString("HH:mm:ss")}");
         }
 
 		private void UpdateLoading(bool showLoading)

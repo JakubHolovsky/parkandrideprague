@@ -2,6 +2,7 @@
 using ParkAndRidePrague.Core.Enums;
 using ParkAndRidePrague.Core.Interfaces;
 using ParkAndRidePrague.Core.Helpers;
+using System;
 
 namespace ParkAndRidePrague.Core.Dtos
 {
@@ -20,7 +21,7 @@ namespace ParkAndRidePrague.Core.Dtos
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("lastupdatedate")]
-        public string LastUpdateDate { get; set; }
+        public DateTime LastUpdateDate { get; set; }
         [JsonProperty("numoffreeplaces")]
         public int FreePlacesCount { get; set; }
         [JsonProperty("numoftakenplaces")]

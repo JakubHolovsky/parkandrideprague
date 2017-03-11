@@ -1,15 +1,28 @@
 ﻿using Xamarin.Forms;
+using ParkAndRidePrague.Core.Interfaces;
+using System.Collections.Generic;
 
 namespace ParkAndRidePrague
 {
     public partial class App : Application
     {
+		public event OnParkingsRefreshedEventHandler OnParkingsRefreshed;
+		public delegate void OnParkingsRefreshedEventHandler(IApiResult<List<IParking>> apiResult);
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new ParkAndRidePrague.MainPage();
+            MainPage = new MainPage();
         }
+
+		public void InvokeParkingsRefreshed(IApiResult<List<IParking>> apiResult)
+		{
+			if (OnParkingsRefreshed != null)
+			{
+				OnParkingsRefreshed.Invoke(apiResult);
+			}
+		}
 
         protected override void OnStart()
         {

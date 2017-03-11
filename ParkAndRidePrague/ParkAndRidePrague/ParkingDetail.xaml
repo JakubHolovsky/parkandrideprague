@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:ParkAndRidePrague"
+	xmlns:my="clr-namespace:ParkAndRidePrague.Core.Enums;assembly=ParkAndRidePrague.Core"
+	x:Class="ParkAndRidePrague.ParkingDetail">
+	<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
+    </ContentPage.Padding>
+	<ContentPage.Content>
+		<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+			<Label Text="{Binding Name}" FontSize="30" HorizontalOptions="Center" />
+			<Label Text="Free Spaces:" FontSize="20" HorizontalOptions="Center" />
+			<Label Text="{Binding FreePlacesCount}" FontSize="80" HorizontalOptions="Center">
+				<Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Style.Triggers>
+                                            <DataTrigger TargetType="{x:Type Label}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.None}">
+                                                <Setter Property="TextColor" Value="#FF5722" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="{x:Type Label}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.Low}">
+                                                <Setter Property="TextColor" Value="#FFC107" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="{x:Type Label}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.Medium}">
+                                                <Setter Property="TextColor" Value="#CDDC39" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="{x:Type Label}" Binding="{Binding Path=ParkingAvailability}" Value="{x:Static my:ParkingAvailability.High}">
+                                                <Setter Property="TextColor" Value="#4CAF50" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+			</Label>
+			<Label x:Name="labelDifference" HorizontalOptions="Center" Text="{Binding Difference}" FontSize="10" IsVisible="false" />
+			<Label HorizontalOptions="Center" Text="Total Spaces:" FontSize="20" />
+			<Label HorizontalOptions="Center" Text="{Binding TotalPlacesCount}" FontSize="20" />
+			<Label HorizontalOptions="Center" Text="Taken Spaces:" FontSize="20" />
+			<Label HorizontalOptions="Center" Text="{Binding TakenPlacesCount}" FontSize="20" />
+			<Label HorizontalOptions="Center" Text="Updated at:" FontSize="10" />
+			<Label HorizontalOptions="Center" Text="{Binding LastUpdateDate, StringFormat='{0:HH:mm:ss}'}" FontSize="10" /> 
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

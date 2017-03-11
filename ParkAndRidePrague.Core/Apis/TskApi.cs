@@ -18,7 +18,7 @@ namespace ParkAndRidePrague.Core.Apis
             this.logger = logger;
         }
 
-        public async Task<ApiResult<List<IParking>>> GetParkings()
+        public async Task<IApiResult<List<IParking>>> GetParkings()
         {
             try
             {
@@ -28,16 +28,18 @@ namespace ParkAndRidePrague.Core.Apis
 				return new ApiResult<List<IParking>>
 				{
 					Error = false,
-					Result = tskResponse.Parkings.Cast<IParking>().ToList()
+					Result = tskResponse.Parkings.Cast<IParking>().ToList(),
+					UpdatedAt = DateTime.Now
 				};
             }
             catch (Exception e)
             {
                 logger.Log(e);
-				return new ApiResult<List<IParking>>()
+				return new ApiResult<List<IParking>>
 				{
 					Error = true,
-					Result = new List<IParking>()
+					Result = new List<IParking>(),
+					UpdatedAt = DateTime.Now
 				};
             }
         }

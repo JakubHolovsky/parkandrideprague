@@ -5,6 +5,6 @@ namespace ParkAndRidePrague.Core.Interfaces
 {
     public interface IParkingApi
     {
-        Task<ApiResult<List<IParking>>> GetParkings();
+        Task<IApiResult<List<IParking>>> GetParkings();
     }
 }

@@ -10,7 +10,7 @@ namespace ParkAndRidePrague.Core.Test
 		{
 		}
 
-		public async Task<ApiResult<List<IParking>>> GetParkings()
+		public async Task<IApiResult<List<IParking>>> GetParkings()
 		{
 			var testParkings = new List<IParking>();
 			var testParking1 = new TestParking()

@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:ParkAndRidePrague"
              xmlns:my="clr-namespace:ParkAndRidePrague.Core.Enums;assembly=ParkAndRidePrague.Core"
              x:Class="ParkAndRidePrague.MainPage">
+	<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
+    </ContentPage.Padding>
     <ContentPage.Content>
 		<StackLayout Orientation="Vertical">
 		<StackLayout Orientation="Horizontal">

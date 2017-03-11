@@ -11,6 +11,11 @@ namespace ParkAndRidePrague.Core.Test
 		{
 		}
 
+		public int Id
+		{
+			get; set;
+		}
+
 		public int FreePlacesCount
 		{
 			get; set;
@@ -24,6 +29,11 @@ namespace ParkAndRidePrague.Core.Test
 		public double Longitude
 		{
 			get; set;
+		}
+
+		public DateTime LastUpdateDate 
+		{ 
+			get; set; 
 		}
 
 		public string Name
