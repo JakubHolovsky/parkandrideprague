@@ -12,18 +12,16 @@ namespace ParkAndRidePrague.ViewModels
 
 		public ParkingViewModel(IParking parking)
 		{
-			Update(parking, false);
+			Update(parking);
 		}
 
-		public void Update(IParking parking, bool updateDifference = true)
+		public void Update(IParking parking)
 		{
-			if (updateDifference)
-				Difference = parking.FreePlacesCount - FreePlacesCount;
-
 			Name = parking.Name;
 			LastUpdateDate = parking.LastUpdateDate;
 			TotalPlacesCount = parking.TotalPlacesCount;
 			FreePlacesCount = parking.FreePlacesCount;
+			PreviousFreePlacesCount = parking.PreviousFreePlacesCount;
 			TakenPlacesCount = parking.TakenPlacesCount;
 			ParkingAvailability = parking.ParkingAvailability;
 		}
@@ -81,8 +79,11 @@ namespace ParkAndRidePrague.ViewModels
 			{
 				freePlacesCount = value;
 				OnPropertyChanged("FreePlacesCount");
+				OnPropertyChanged("DifferenceText");
 			} 
 		}
+
+		private int? PreviousFreePlacesCount { get; set; }
 
 		private int takenPlacesCount;
 		public int TakenPlacesCount 
@@ -112,18 +113,14 @@ namespace ParkAndRidePrague.ViewModels
 			}
 		}
 
-		private int difference;
 		public int Difference
 		{
 			get
 			{
-				return difference;
-			}
-			set
-			{
-				difference = value;
-				OnPropertyChanged("Difference");
-				OnPropertyChanged("DifferenceText");
+				if (!PreviousFreePlacesCount.HasValue)
+					return 0;
+
+				return PreviousFreePlacesCount.Value - FreePlacesCount;
 			}
 		}
 

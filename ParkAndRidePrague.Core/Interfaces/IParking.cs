@@ -13,6 +13,7 @@ namespace ParkAndRidePrague.Core.Interfaces
         int TotalPlacesCount { get; set; }
         int FreePlacesCount { get; set; }
         int TakenPlacesCount { get; set; }
+		int? PreviousFreePlacesCount { get; set; }
         ParkingAvailability ParkingAvailability { get; }
     }
 }

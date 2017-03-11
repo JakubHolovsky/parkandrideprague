@@ -41,6 +41,12 @@ namespace ParkAndRidePrague.Core.Dtos
 				return this.CalculateParkingAvailability();
             }
         }
-        #endregion
-    }
+
+		public int? PreviousFreePlacesCount
+		{
+			get; set;
+		}
+
+		#endregion
+	}
 }

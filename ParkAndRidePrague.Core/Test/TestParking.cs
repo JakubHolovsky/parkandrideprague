@@ -58,5 +58,10 @@ namespace ParkAndRidePrague.Core.Test
 		{
 			get; set;
 		}
+
+		public int? PreviousFreePlacesCount
+		{
+			get; set;
+		}
 	}
 }
