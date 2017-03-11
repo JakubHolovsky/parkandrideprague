@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using ParkAndRidePrague.Core.Enums;
 using ParkAndRidePrague.Core.Interfaces;
 
@@ -122,6 +123,25 @@ namespace ParkAndRidePrague.ViewModels
 			{
 				difference = value;
 				OnPropertyChanged("Difference");
+				OnPropertyChanged("DifferenceText");
+			}
+		}
+
+		public string DifferenceText
+		{
+			get
+			{
+				if (Difference == 0)
+				{
+					return "-";
+				}
+
+				if (Difference > 0)
+				{
+					return $"+{Difference}";
+				}
+
+				return Difference.ToString(CultureInfo.InvariantCulture);
 			}
 		}
 
