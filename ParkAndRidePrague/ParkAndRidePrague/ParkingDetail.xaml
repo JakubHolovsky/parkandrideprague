@@ -34,9 +34,9 @@
 			<Label HorizontalOptions="Center" Text="{Binding TotalPlacesCount}" FontSize="20" />
 			<Label HorizontalOptions="Center" Text="Taken Places" FontSize="20" />
 			<Label HorizontalOptions="Center" Text="{Binding TakenPlacesCount}" FontSize="20" />
-			<Label HorizontalOptions="Center" Text="Since Last Update:" FontSize="20" /> 
+			<Label HorizontalOptions="Center" Text="Since Last Update" FontSize="20" /> 
 			<Label x:Name="labelDifference" HorizontalOptions="Center" Text="{Binding DifferenceText}" FontSize="20" />
-			<Label HorizontalOptions="Center" Text="Updated at:" FontSize="10" Margin="0, 30, 0, 0" />
+			<Label HorizontalOptions="Center" Text="Updated at" FontSize="10" Margin="0, 30, 0, 0" />
 			<Label HorizontalOptions="Center" Text="{Binding LastUpdateDate, StringFormat='{0:HH:mm:ss}'}" FontSize="10" /> 
 		</StackLayout>
 	</ContentPage.Content>
