@@ -2,6 +2,7 @@
 using System.Linq;
 using ParkAndRidePrague.Core.Interfaces;
 using ParkAndRidePrague.ViewModels;
+using Plugin.ExternalMaps;
 using Xamarin.Forms;
 
 namespace ParkAndRidePrague
@@ -20,8 +21,13 @@ namespace ParkAndRidePrague
 
 			ToolbarItems.Add(new ToolbarItem
 			{
+				Text = "Map",
+				Command = new Command(async () => await CrossExternalMaps.Current.NavigateTo(Parking.Name, Parking.Latitude, Parking.Longitude))
+			});
+			ToolbarItems.Add(new ToolbarItem
+			{
 				Text = "Back",
-				Command = new Command(() => Navigation.PopModalAsync()),
+				Command = new Command(() => Navigation.PopModalAsync()), 
 			});
 		}
 
