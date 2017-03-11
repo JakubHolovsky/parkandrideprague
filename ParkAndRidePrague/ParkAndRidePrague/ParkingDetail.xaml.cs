@@ -18,6 +18,7 @@ namespace ParkAndRidePrague
 			Parking = parking;
 			var parkingViewModel = new ParkingViewModel(parking);
 			BindingContext = parkingViewModel;
+			UpdateFreePlacesCountColorText(parkingViewModel);
 
 			ToolbarItems.Add(new ToolbarItem
 			{
@@ -62,9 +63,16 @@ namespace ParkAndRidePrague
 				return;
 
 			parkingViewModel.Update(parking);
+			UpdateFreePlacesCountColorText(parkingViewModel);
 
-			Device.BeginInvokeOnMainThread(() => {
-			if (!labelDifference.IsVisible)
+			Parking = parking;
+		}
+
+		private void UpdateFreePlacesCountColorText(ParkingViewModel parkingViewModel)
+		{
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				if (!labelDifference.IsVisible)
 					labelDifference.IsVisible = true;
 				if (parkingViewModel.Difference == 0)
 				{
@@ -79,8 +87,6 @@ namespace ParkAndRidePrague
 					labelDifference.TextColor = Color.FromHex("#FF5722");
 				}
 			});
-
-			Parking = parking;
 		}
 	}
 }

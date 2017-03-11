@@ -120,7 +120,7 @@ namespace ParkAndRidePrague.ViewModels
 				if (!PreviousFreePlacesCount.HasValue)
 					return 0;
 
-				return PreviousFreePlacesCount.Value - FreePlacesCount;
+				return FreePlacesCount - PreviousFreePlacesCount.Value;
 			}
 		}
 
