@@ -112,7 +112,10 @@ namespace ParkAndRidePrague
 				var parking = apiResult.Result.SingleOrDefault(p => p.Id == observableParking.Id);
 				if (parking != null)
 				{
-					parking.PreviousFreePlacesCount = observableParking.FreePlacesCount;
+					if (parking.LastUpdateDate == observableParking.LastUpdateDate)
+						parking.PreviousFreePlacesCount = observableParking.PreviousFreePlacesCount;
+					else
+						parking.PreviousFreePlacesCount = observableParking.FreePlacesCount;
 				}
 			}
 			((App)Application.Current).InvokeParkingsRefreshed(apiResult);
