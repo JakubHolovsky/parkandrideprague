@@ -38,12 +38,11 @@ namespace ParkAndRidePrague
 
         private void TimerCallback(object state)
         {
-			var refreshParkingTask = new Task(async () =>
-			{
-				var displayLoading = parkings.Count == 0;
-				await RefreshParkings(displayLoading);
-			});
-			refreshParkingTask.Start();
+            Device.BeginInvokeOnMainThread(async() =>
+            {
+                var displayLoading = parkings.Count == 0;
+                await RefreshParkings(displayLoading);
+            });
         }
 
         protected override void OnAppearing()

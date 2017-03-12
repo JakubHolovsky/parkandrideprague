@@ -14,9 +14,9 @@ namespace ParkAndRidePrague.Core.Tests.Apis
         {
             var logger = new Logger();
             var tskApi = new TskApi(logger);
-            var parkings = await tskApi.GetParkings();
-            Assert.IsNotNull(parkings);
-            Assert.IsTrue(parkings.Count > 0);
+            var apiResult = await tskApi.GetParkings();
+            Assert.IsNotNull(apiResult);
+            Assert.IsTrue(apiResult.Result.Count > 0);
         }
 
         [TestMethod]
@@ -24,10 +24,10 @@ namespace ParkAndRidePrague.Core.Tests.Apis
         {
             var logger = new Logger();
             var tskApi = new TskApi(logger);
-            var parkings = await tskApi.GetParkings();
-            Assert.IsNotNull(parkings);
-            Assert.IsTrue(parkings.Count > 0);
-            foreach (var parking in parkings)
+            var apiResult = await tskApi.GetParkings();
+            Assert.IsNotNull(apiResult);
+            Assert.IsTrue(apiResult.Result.Count > 0);
+            foreach (var parking in apiResult.Result)
                 Console.WriteLine($"Parking: {parking.Name}, Availability: {parking.ParkingAvailability}, Total Places: {parking.TotalPlacesCount}, Free Places: {parking.FreePlacesCount}, Taken Places: {parking.TakenPlacesCount}");
         }
     }
