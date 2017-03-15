@@ -31,7 +31,7 @@ namespace ParkAndRidePrague
 			{
 				Text = "Back",
 				Command = new Command(() => Navigation.PopModalAsync()),
-				Icon = "back_arrow.png"
+				Icon = Device.OnPlatform(null, null, "back_arrow.png")
 			});
 		}
 
