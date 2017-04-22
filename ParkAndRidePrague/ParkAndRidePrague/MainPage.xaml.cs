@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using ParkAndRidePrague.Core.Apis;
 using ParkAndRidePrague.Core.Common;
 using ParkAndRidePrague.Core.Interfaces;
-using ParkAndRidePrague.Core.Test;
 using ParkAndRidePrague.Helpers;
 using Plugin.Geolocator;
 using Xamarin.Forms;
@@ -18,7 +16,7 @@ namespace ParkAndRidePrague
 		private readonly IParkingApi parkingApi;
         private readonly ILogger logger;
         private readonly ObservableCollection<IParking> parkings;
-        private Timer timer;
+        
 
         public MainPage()
         {
@@ -32,13 +30,12 @@ namespace ParkAndRidePrague
             parkings = new ObservableCollection<IParking>();
             listViewParkings.ItemsSource = parkings;
 
-            TimerCallback timerDelegate = TimerCallback;
-            timer = new Timer(timerDelegate, null, 0, 30000);
+            ((App)App.Current).OnTimerTick += OnOnTimerTick;
         }
 
-        private void TimerCallback(object state)
+        private void OnOnTimerTick()
         {
-            Device.BeginInvokeOnMainThread(async() =>
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 var displayLoading = parkings.Count == 0;
                 await RefreshParkings(displayLoading);
