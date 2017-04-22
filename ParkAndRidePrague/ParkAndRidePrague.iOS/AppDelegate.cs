@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using HockeyApp.iOS;
+using ParkAndRidePrague.Helpers;
 using UIKit;
 
 namespace ParkAndRidePrague.iOS
@@ -24,6 +26,13 @@ namespace ParkAndRidePrague.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+
+            #region HockeyApp
+            var manager = BITHockeyManager.SharedHockeyManager;
+            manager.Configure(HockeyAppHelper.AppId);
+            manager.StartManager();
+            manager.Authenticator.AuthenticateInstallation(); // This line is obsolete in crash only builds
+            #endregion
 
             return base.FinishedLaunching(app, options);
         }

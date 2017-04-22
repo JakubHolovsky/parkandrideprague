@@ -1,6 +1,8 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using HockeyApp.Android;
+using ParkAndRidePrague.Helpers;
 using Plugin.Permissions;
 
 namespace ParkAndRidePrague.Droid
@@ -22,6 +24,13 @@ namespace ParkAndRidePrague.Droid
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            CrashManager.Register(this, HockeyAppHelper.AppId);
         }
     }
 }

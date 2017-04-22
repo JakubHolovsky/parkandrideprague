@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.HockeyApp;
+using ParkAndRidePrague.Helpers;
 
 namespace ParkAndRidePrague.UWP
 {
@@ -30,6 +32,8 @@ namespace ParkAndRidePrague.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            HockeyClient.Current.Configure(HockeyAppHelper.AppId);
         }
 
         /// <summary>
