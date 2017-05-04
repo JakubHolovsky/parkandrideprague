@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkAndRidePrague.Android", "ParkAndRidePrague\ParkAndRidePrague.Android\ParkAndRidePrague.Android.csproj", "{AF43D8CA-5415-4D4C-838E-CDBFEBDE064B}"
 EndProject
@@ -341,7 +341,7 @@ Global
 		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Debug|x86.ActiveCfg = Debug|x86
 		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Debug|x86.Build.0 = Debug|x86
 		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Debug|x86.Deploy.0 = Debug|x86
-		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Release|Any CPU.ActiveCfg = Release|x86
+		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Release|Any CPU.ActiveCfg = Release|ARM
 		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Release|ARM.ActiveCfg = Release|ARM
 		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Release|ARM.Build.0 = Release|ARM
 		{B613475C-5531-4E28-A6C3-8BBB36A8C126}.Release|ARM.Deploy.0 = Release|ARM
