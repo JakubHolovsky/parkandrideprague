@@ -5,7 +5,7 @@ using Android.Support.V7.App;
 
 namespace ParkAndRidePrague.Droid
 {
-    [Activity(Icon = "@drawable/icon", Theme = "@style/SplashTheme", MainLauncher = true)]
+    [Activity(Label = "Prague P+R", Icon = "@drawable/icon", Theme = "@style/SplashTheme", MainLauncher = true)]
     public class SplashActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
