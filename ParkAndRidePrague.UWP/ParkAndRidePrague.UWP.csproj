@@ -108,6 +108,8 @@
     <None Include="ParkAndRidePrague.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\back_arrow.png" />
+    <Content Include="Images\map_pin.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

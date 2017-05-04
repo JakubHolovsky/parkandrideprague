@@ -9,7 +9,7 @@ namespace ParkAndRidePrague
 {
 	public partial class ParkingDetail : ContentPage
 	{
-		public IParking Parking { get; set; }
+	    private IParking Parking { get; set; }
 
 		public ParkingDetail(IParking parking)
 		{
@@ -24,14 +24,14 @@ namespace ParkAndRidePrague
 			{
 				Text = "Map",
 				Command = new Command(async () => await CrossExternalMaps.Current.NavigateTo(Parking.Name, Parking.Latitude, Parking.Longitude)),
-				Icon = "map_pin.png"
+				Icon = Device.OnPlatform("map_pin.png", "map_pin.png", "Images/map_pin.png") 
 			});
 
 			ToolbarItems.Add(new ToolbarItem
 			{
 				Text = "Back",
-				Command = new Command(() => Navigation.PopModalAsync()),
-				Icon = Device.OnPlatform(null, null, "back_arrow.png")
+				Command = new Command(async () => await Navigation.PopModalAsync()),
+				Icon = Device.OnPlatform(null, null, "Images/back_arrow.png")
 			});
 		}
 

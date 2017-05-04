@@ -23,7 +23,10 @@ namespace ParkAndRidePrague
 
         private void TimerCallback(object state)
         {
-            OnTimerTick?.Invoke();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                OnTimerTick?.Invoke();
+            });
         }
 
         private void StartTimer()
@@ -41,12 +44,9 @@ namespace ParkAndRidePrague
         }
 
         public void InvokeParkingsRefreshed(IApiResult<List<IParking>> apiResult)
-		{
-			if (OnParkingsRefreshed != null)
-			{
-				OnParkingsRefreshed.Invoke(apiResult);
-			}
-		}
+        {
+            OnParkingsRefreshed?.Invoke(apiResult);
+        }
 
         protected override void OnStart()
         {

@@ -33,13 +33,10 @@ namespace ParkAndRidePrague
             ((App)App.Current).OnTimerTick += OnOnTimerTick;
         }
 
-        private void OnOnTimerTick()
+        private async void OnOnTimerTick()
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var displayLoading = parkings.Count == 0;
-                await RefreshParkings(displayLoading);
-            });
+            var displayLoading = parkings.Count == 0;
+            await RefreshParkings(displayLoading);
         }
 
         protected override void OnAppearing()
