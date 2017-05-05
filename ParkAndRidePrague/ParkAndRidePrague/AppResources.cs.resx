@@ -124,7 +124,7 @@
     <value>aktualizace parkovišť se nezdařila</value>
   </data>
   <data name="freePlaces" xml:space="preserve">
-    <value>Volná Místa</value>
+    <value>Volná místa</value>
   </data>
   <data name="map" xml:space="preserve">
     <value>Mapa</value>
@@ -133,13 +133,13 @@
     <value>síť nedostupná</value>
   </data>
   <data name="sinceLastUpdate" xml:space="preserve">
-    <value>Od Poslední Aktualizace</value>
+    <value>Od poslední aktualizace</value>
   </data>
   <data name="takenPlaces" xml:space="preserve">
-    <value>Obsazená Místa</value>
+    <value>Obsazená místa</value>
   </data>
   <data name="totalPlaces" xml:space="preserve">
-    <value>Volná Místa</value>
+    <value>Celkem míst</value>
   </data>
   <data name="updatedAt" xml:space="preserve">
     <value>Aktualizováno v</value>
