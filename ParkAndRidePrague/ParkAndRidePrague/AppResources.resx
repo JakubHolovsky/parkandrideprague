@@ -144,9 +144,6 @@
   <data name="updatedAt" xml:space="preserve">
     <value>Updated At</value>
   </data>
-  <data name="updatedAtWithTime" xml:space="preserve">
-    <value>updated at {0}</value>
-  </data>
   <data name="updating" xml:space="preserve">
     <value>updating</value>
   </data>

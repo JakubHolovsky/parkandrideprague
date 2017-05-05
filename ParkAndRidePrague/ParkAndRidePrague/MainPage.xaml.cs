@@ -139,7 +139,7 @@ namespace ParkAndRidePrague
 
 			if (displayLoading)
 				UpdateLoading(false);
-			UpdateStatus(string.Format(AppResources.updatedAtWithTime, apiResult.UpdatedAt.ToString("HH:mm:ss")));
+			UpdateStatus($"{AppResources.updatedAt.ToLower()} {apiResult.UpdatedAt.ToString("HH:mm:ss")}");
         }
 
 		private void UpdateLoading(bool showLoading)

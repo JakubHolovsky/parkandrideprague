@@ -143,15 +143,6 @@ namespace ParkAndRidePrague {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to updated at {0}.
-        /// </summary>
-        public static string updatedAtWithTime {
-            get {
-                return ResourceManager.GetString("updatedAtWithTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to updating.
         /// </summary>
         public static string updating {
