@@ -22,14 +22,14 @@ namespace ParkAndRidePrague
 
 			ToolbarItems.Add(new ToolbarItem
 			{
-				Text = "Map",
+				Text = AppResources.map,
 				Command = new Command(async () => await CrossExternalMaps.Current.NavigateTo(Parking.Name, Parking.Latitude, Parking.Longitude)),
 				Icon = Device.OnPlatform("map_pin.png", "map_pin.png", "Images/map_pin.png") 
 			});
 
 			ToolbarItems.Add(new ToolbarItem
 			{
-				Text = "Back",
+				Text = AppResources.back,
 				Command = new Command(async () => await Navigation.PopModalAsync()),
 				Icon = Device.OnPlatform(null, null, "Images/back_arrow.png")
 			});

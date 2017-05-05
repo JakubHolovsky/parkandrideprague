@@ -73,14 +73,14 @@ namespace ParkAndRidePrague
 
         private async Task RefreshParkings(bool displayLoading)
         {
-			UpdateStatus("updating");
+			UpdateStatus(AppResources.updating);
 			if (displayLoading)
 				UpdateLoading(true);
 
 			var hasInternetAccess = await NetworkHelper.HasInternetAccess();
 			if (!hasInternetAccess)
 			{
-				UpdateStatus("no network");
+				UpdateStatus(AppResources.noNetwork);
 
 				if (displayLoading)
 					UpdateLoading(false);
@@ -92,7 +92,7 @@ namespace ParkAndRidePrague
 
 			if (apiResult.Error)
 			{
-				UpdateStatus("cannot updating parkings now");
+				UpdateStatus(AppResources.cannotUpdateParkings);
 
 				if (displayLoading)
 					UpdateLoading(false);
@@ -139,7 +139,7 @@ namespace ParkAndRidePrague
 
 			if (displayLoading)
 				UpdateLoading(false);
-			UpdateStatus($"updated at {apiResult.UpdatedAt.ToString("HH:mm:ss")}");
+			UpdateStatus(string.Format(AppResources.updatedAtWithTime, apiResult.UpdatedAt.ToString("HH:mm:ss")));
         }
 
 		private void UpdateLoading(bool showLoading)
