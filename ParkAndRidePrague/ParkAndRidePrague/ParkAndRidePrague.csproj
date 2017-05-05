@@ -38,10 +38,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppResources.cz.Designer.cs">
+    <Compile Include="AppResources.cs.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.cz.resx</DependentUpon>
+      <DependentUpon>AppResources.cs.resx</DependentUpon>
     </Compile>
     <Compile Include="AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -64,9 +64,9 @@
     <Compile Include="ViewModels\ParkingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AppResources.cz.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.cz.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="AppResources.cs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.cs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
