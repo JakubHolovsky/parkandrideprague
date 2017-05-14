@@ -135,6 +135,9 @@
   <data name="sinceLastUpdate" xml:space="preserve">
     <value>Since Last Update</value>
   </data>
+  <data name="sortingByLocation" xml:space="preserve">
+    <value>sorting by location</value>
+  </data>
   <data name="takenPlaces" xml:space="preserve">
     <value>Taken Places</value>
   </data>

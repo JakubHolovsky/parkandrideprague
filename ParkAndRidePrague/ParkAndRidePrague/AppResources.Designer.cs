@@ -116,6 +116,15 @@ namespace ParkAndRidePrague {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sorting by location.
+        /// </summary>
+        public static string sortingByLocation {
+            get {
+                return ResourceManager.GetString("sortingByLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taken Places.
         /// </summary>
         public static string takenPlaces {

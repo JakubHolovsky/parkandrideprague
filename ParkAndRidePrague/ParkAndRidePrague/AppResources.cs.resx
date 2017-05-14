@@ -135,6 +135,9 @@
   <data name="sinceLastUpdate" xml:space="preserve">
     <value>Od poslední aktualizace</value>
   </data>
+  <data name="sortingByLocation" xml:space="preserve">
+    <value>řadím dle polohy</value>
+  </data>
   <data name="takenPlaces" xml:space="preserve">
     <value>Obsazená místa</value>
   </data>
