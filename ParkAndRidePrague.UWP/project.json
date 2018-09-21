@@ -5,7 +5,7 @@
     "Xam.Plugin.Connectivity": "3.2.0",
     "Xam.Plugin.ExternalMaps": "4.0.1",
     "Xam.Plugin.Geolocator": "4.5.0.6",
-    "Xamarin.Forms": "3.1.0.697729"
+    "Xamarin.Forms": "3.2.0.839982"
   },
   "frameworks": {
     "uap10.0.10586": {}
