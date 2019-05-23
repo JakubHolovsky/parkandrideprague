@@ -20,19 +20,32 @@ namespace ParkAndRidePrague
 			BindingContext = parkingViewModel;
 			UpdateFreePlacesCountColorText(parkingViewModel);
 
+            string backIcon = null;
+            string mapIcon = null;
+            switch(Device.RuntimePlatform)
+            {
+                case Device.UWP:
+                    backIcon = "Images/back_arrow.png";
+                    mapIcon = "Images/map_pin.png";
+                    break;
+                default:
+                    mapIcon = "map_pin.png";
+                    break;
+            }
+
 			ToolbarItems.Add(new ToolbarItem
 			{
 				Text = AppResources.map,
 				Command = new Command(async () => await CrossExternalMaps.Current.NavigateTo(Parking.Name, Parking.Latitude, Parking.Longitude)),
-				Icon = Device.OnPlatform("map_pin.png", "map_pin.png", "Images/map_pin.png") 
+				IconImageSource = mapIcon 
 			});
 
 			ToolbarItems.Add(new ToolbarItem
 			{
 				Text = AppResources.back,
 				Command = new Command(async () => await Navigation.PopModalAsync()),
-				Icon = Device.OnPlatform(null, null, "Images/back_arrow.png")
-			});
+				IconImageSource = backIcon
+            });
 		}
 
 		protected override void OnAppearing()
