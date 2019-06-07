@@ -8,6 +8,8 @@ using ParkAndRidePrague.Core.Common;
 using ParkAndRidePrague.Core.Interfaces;
 using ParkAndRidePrague.Helpers;
 using Plugin.Geolocator;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
 
 namespace ParkAndRidePrague
@@ -17,7 +19,7 @@ namespace ParkAndRidePrague
 		private readonly IParkingApi parkingApi;
         private readonly ILogger logger;
         private readonly ObservableCollection<IParking> parkings;
-        
+        private bool shownGrantPermissionAlert;
 
         public MainPage()
         {
@@ -40,12 +42,18 @@ namespace ParkAndRidePrague
             await RefreshParkings(displayLoading);
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             listViewParkings.Refreshing += ListViewParkingsOnRefreshing;
 			listViewParkings.ItemTapped += ListViewParkingsItemTapped;
+
+            if (shownGrantPermissionAlert == false)
+            {
+                shownGrantPermissionAlert = true;
+                await GrantLocationPermission();
+            }
         }
 
         protected override void OnDisappearing()
@@ -54,6 +62,36 @@ namespace ParkAndRidePrague
 
             listViewParkings.Refreshing -= ListViewParkingsOnRefreshing;
 			listViewParkings.ItemTapped -= ListViewParkingsItemTapped;
+        }
+
+        private async Task GrantLocationPermission()
+        {
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status != PermissionStatus.Granted)
+                {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+                    {
+                        await DisplayAlert(AppResources.needLocation, AppResources.needLocationDesc, "OK");
+                    }
+
+                    status = (await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location)).First().Value;
+                }
+
+                if (status == PermissionStatus.Granted)
+                {
+                    //Query permission
+                }
+                else if (status != PermissionStatus.Unknown)
+                {
+                    //location denied
+                }
+            }
+            catch (Exception ex)
+            {
+                //Something went wrong
+            }
         }
 
 		private async void ListViewParkingsItemTapped(object sender, ItemTappedEventArgs e)

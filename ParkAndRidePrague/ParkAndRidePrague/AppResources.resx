@@ -129,6 +129,12 @@
   <data name="map" xml:space="preserve">
     <value>Map</value>
   </data>
+  <data name="needLocation" xml:space="preserve">
+    <value>Need Location</value>
+  </data>
+  <data name="needLocationDesc" xml:space="preserve">
+    <value>In order to sort parkings - a location permission is needed</value>
+  </data>
   <data name="noNetwork" xml:space="preserve">
     <value>no network</value>
   </data>

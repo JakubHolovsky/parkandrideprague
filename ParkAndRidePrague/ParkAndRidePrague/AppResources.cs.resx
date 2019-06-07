@@ -129,6 +129,12 @@
   <data name="map" xml:space="preserve">
     <value>Mapa</value>
   </data>
+  <data name="needLocation" xml:space="preserve">
+    <value>Lokace požadována</value>
+  </data>
+  <data name="needLocationDesc" xml:space="preserve">
+    <value>K seřazení parkovišť bude potřeba Vaše lokace</value>
+  </data>
   <data name="noNetwork" xml:space="preserve">
     <value>síť nedostupná</value>
   </data>

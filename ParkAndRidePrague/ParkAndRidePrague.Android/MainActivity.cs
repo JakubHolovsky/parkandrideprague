@@ -3,11 +3,11 @@ using Android.Content.PM;
 using Android.OS;
 using HockeyApp.Android;
 using ParkAndRidePrague.Helpers;
-using Plugin.Permissions;
+using Plugin.CurrentActivity;
 
 namespace ParkAndRidePrague.Droid
 {
-    [Activity(Label = "Prague P+R", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(MainLauncher = true, Label = "Prague P+R", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -16,6 +16,7 @@ namespace ParkAndRidePrague.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            CrossCurrentActivity.Current.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
